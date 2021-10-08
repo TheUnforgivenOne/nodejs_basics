@@ -16,7 +16,13 @@
     "url": "https://github.com/TheUnforgivenOne/nodejs_basics/issues"
   },
   "homepage": "https://github.com/TheUnforgivenOne/nodejs_basics#readme",
+  "dependencies": {
+    "typescript": "^4.4.3"
+  },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
     "nodemon": "^2.0.13"
   }
 }
