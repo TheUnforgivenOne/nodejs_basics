@@ -6,10 +6,3 @@ export const usersDBMock: User[] = [
   { id: '96964b9e-31ef-4951-934f-05e7f01b58f5', login: 'login3', password: 'pass3', age: 24, isDeleted: false },
   { id: 'bc235c41-831c-4fc6-840b-66bc4fc62f9c', login: 'login4', password: 'pass4', age: 24, isDeleted: false }
 ];
-
-// {
-//   "login": "login657",
-//   "password": "pass1",
-//   "age": 24,
-//   "isDeleted": false
-// }

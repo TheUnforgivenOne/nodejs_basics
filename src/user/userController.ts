@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { User } from './types/user.type';
 import UserDB from './userDB';
+import { validateUser } from './middleware/userValidation';
 
 class UserController {
   getAllUsers(req: Request, res: Response) {
@@ -28,6 +29,11 @@ class UserController {
   }
 
   createUser(req: Request, res: Response) {
+    const userData = req.body;
+    const { error } = validateUser(userData);
+
+    error && res.json({ status: 400, message: error.details[0].message });
+
     const newUser = UserDB.createUser(req.body);
 
     !newUser && res.json({ status: 400, message: 'Failed to create a new user' });
@@ -37,7 +43,12 @@ class UserController {
 
   updateUserById(req: Request, res: Response) {
     const { id } = req.params;
-    const updatedUser = UserDB.updateUserById(id, req.body);
+    const userData = req.body;
+    const { error } = validateUser(userData);
+
+    error && res.json({ status: 400, message: error.details[0].message });
+
+    const updatedUser = UserDB.updateUserById(id, userData);
 
     !updatedUser && res.json({ status: 400, message: 'Failed to update a user' });
 
