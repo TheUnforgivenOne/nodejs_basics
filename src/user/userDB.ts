@@ -24,7 +24,7 @@ class UserDB {
   updateUserById(userId: string, userData: Omit<User, 'id'>) {
     const userIndex = this.users.findIndex(({ id }) => id === userId);
 
-    if (userIndex !== undefined) {
+    if (userIndex > -1) {
       const updatedUser = { id: userId, ...userData };
       this.users[userIndex] = updatedUser;
 
@@ -37,7 +37,8 @@ class UserDB {
   deleteUserById(userId: string) {
     const userIndex = this.users.findIndex(({ id }) => id === userId);
 
-    if (userIndex !== undefined) {
+    console.log(userIndex);
+    if (userIndex > -1) {
       this.users[userIndex].isDeleted = true;
 
       return this.users[userIndex];
